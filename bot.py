@@ -88,6 +88,7 @@ async def op(_, m :Message):
                         InlineKeyboardButton("🗯 Channel", url="https://t.me/mrdangerbots"),
                         InlineKeyboardButton("💬 Support", url="https://t.me/+3PAD7g0mZ1Y2N2E1")
                     ],[
+                        InlineKeyboardButton("Developer ❤️", url="https://t.me/Mrdanger998"),
                         InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/sofia_roirobotstartgroup")
                     ]
                 ]
