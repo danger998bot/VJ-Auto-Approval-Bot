@@ -35,19 +35,45 @@ gif = [
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Main process ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 @app.on_chat_join_request(filters.group | filters.channel & ~filters.private)
-async def approve(_, m : Message):
+async def approve(_, m: Message):
     op = m.chat
     kk = m.from_user
     try:
         add_group(m.chat.id)
         await app.approve_chat_join_request(op.id, kk.id)
-        img = random.choice(gif)
-        await app.send_video(kk.id,img, "**Hello {}!\nWelcome To {}\n\n__Powerd By : @VJ_Botz __**".format(m.from_user.mention, m.chat.title))
+        
+        # GIF Link
+        img = "https://envs.sh/JPo.jpg"
+        
+        # Welcome Message with Buttons
+        welcome_message = (
+            f"**Hello {m.from_user.mention}!**\n"
+            f"Welcome to **{m.chat.title}** 🎉\n\n"
+            f"__Powered by__: @mrdangerbots"
+        )
+        
+        # Buttons with Links
+        buttons = [
+            [InlineKeyboardButton("Hot Channels Link 1", url="http://t.me/Hotchannel69_robot")],
+            [InlineKeyboardButton("Hot Channels Link 2", url="http://t.me/Hotchannel69_robot")],
+            [InlineKeyboardButton("Hot Channels Link 3", url="http://t.me/Hotchannel69_robot")],
+            [InlineKeyboardButton("Hot Channels Link 4", url="http://t.me/Hotchannel69_robot")],
+            [InlineKeyboardButton("Hot Channels Link 5", url="http://t.me/Hotchannel69_robot")]
+        ]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        
+        # Sending Video with Welcome Message and Buttons
+        await app.send_photo(
+            kk.id, img, caption=welcome_message, parse_mode="markdown", reply_markup=reply_markup
+        )
+        
+        # Add user to the tracking system
         add_user(kk.id)
     except errors.PeerIdInvalid as e:
-        print("user isn't start bot(means group)")
+        print("User isn't start bot (means group)")
     except Exception as err:
-        print(str(err))    
+        print(str(err))
+  
  
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Start ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -59,21 +85,21 @@ async def op(_, m :Message):
             keyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🗯 Channel", url="https://t.me/vj_botz"),
-                        InlineKeyboardButton("💬 Support", url="https://t.me/vj_bot_disscussion")
+                        InlineKeyboardButton("🗯 Channel", url="https://t.me/mrdangerbots"),
+                        InlineKeyboardButton("💬 Support", url="https://t.me/+3PAD7g0mZ1Y2N2E1")
                     ],[
-                        InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/vjmasterblastbot?startgroup")
+                        InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/sofia_roirobotstartgroup")
                     ]
                 ]
             )
             add_user(m.from_user.id)
-            await m.reply_photo("https://graph.org/file/d57d6f83abb6b8d0efb02.jpg", caption="**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By : @VJ_Botz __**".format(m.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard)
+            await m.reply_photo("https://graph.org/file/87d2c53b446b8a77b423f-4646fac6626ff56857.jpg", caption="**🦊 Hello {}!\nI'm an auto approve [Admin Join Requests]({}) Bot.\nI can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission.\n\n__Powerd By : @VJ_Botz __**".format(m.from_user.mention, "https://t.me/telegram/153"), reply_markup=keyboard)
     
         elif m.chat.type == enums.ChatType.GROUP or enums.ChatType.SUPERGROUP:
             keyboar = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("💁‍♂️ Start me private 💁‍♂️", url="https://t.me/vjmasterblastbot?startgroup")
+                        InlineKeyboardButton("💁‍♂️ Start me private 💁‍♂️", url="https://t.me/sofia_roirobot?startgroup")
                     ]
                 ]
             )
@@ -101,10 +127,10 @@ async def chk(_, cb : CallbackQuery):
             keyboard = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🗯 Channel", url="https://t.me/VJ_Botz"),
-                        InlineKeyboardButton("💬 Support", url="https://t.me/vj_bot_disscussion")
+                        InlineKeyboardButton("🗯 Channel", url="https://t.me/mrdangerbots"),
+                        InlineKeyboardButton("💬 Support", url="https://t.me/+3PAD7g0mZ1Y2N2E1")
                     ],[
-                        InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/vjmasterblastbot?startgroup")
+                        InlineKeyboardButton("➕ Add me to your Chat ➕", url="https://t.me/sofia_roirobot?startgroup")
                     ]
                 ]
             )
